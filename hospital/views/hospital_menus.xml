@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu principal -->
+    <menuitem id="hospital_menu_root" name="Hospital"/>
+
+    <!-- Sous-menu Medical -->
+    <menuitem id="hospital_menu_medical" name="Medical" parent="hospital_menu_root"/>
+
+    <!-- Items dans Medical -->
+    <menuitem id="menu_hospital_disease"
+              name="Diseases"
+              parent="hospital_menu_medical"
+              action="action_hospital_disease"/>
+
+    <menuitem id="menu_hospital_symptom"
+              name="Symptoms"
+              parent="hospital_menu_medical"
+              action="action_hospital_symptom"/>
+</odoo>

@@ -4,7 +4,17 @@
     'depends': ['base'],
     'author': "Tiarintsoa",
     'description': "An app module to manage an hospital",
-    'category': "Services",
+    'category': "Hospital Management",
     'application': True,
-    'license': 'LGPL-3'
+    'installable': True,
+    'license': 'LGPL-3',
+    'data': [
+        'security/ir.model.access.csv',
+
+        'data/disease_demo.xml',
+
+        'views/hospital_disease_views.xml',
+        'views/hospital_symptom_views.xml',
+        'views/hospital_menus.xml',
+    ]
 }
