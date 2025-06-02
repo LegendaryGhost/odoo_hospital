@@ -15,6 +15,7 @@
 
         'views/hospital_disease_views.xml',
         'views/hospital_symptom_views.xml',
+        'views/hospital_request_views.xml',
         'views/hospital_menus.xml',
     ]
 }
