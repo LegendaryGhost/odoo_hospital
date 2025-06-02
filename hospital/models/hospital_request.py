@@ -2,8 +2,10 @@ from odoo import models, fields
 
 class HospitalRequest(models.Model):
     _name = 'hospital.request'
-    _description = 'Medical request from the patient'
+    _description = 'Medical Request'
 
-    patient_id = fields.Many2one('res.users', string='Patient', required=True)
-    symptom_ids = fields.Many2many('hospital.symptom', string='Symptômes')
-    note        = fields.Text(string='Commentaires')
+    patient_id = fields.Many2one('res.partner', string='Patient', required=True)
+    symptom_ids = fields.Many2many('hospital.symptom', string='Symptoms')
+    note        = fields.Text(string='Comments')
+    nurse_id = fields.Many2one('res.users', string='Nurse', default=lambda self: self.env.user)
+    doctor_id = fields.Many2one('res.users', string='Assigned Doctor')

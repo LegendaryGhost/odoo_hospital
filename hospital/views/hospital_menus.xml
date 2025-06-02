@@ -7,6 +7,11 @@
   <menuitem id="menu_hospital_medical" name="Medical" parent="menu_hospital_root"/>
 
   <!-- Items dans Médical -->
+  <menuitem id="menu_hospital_request"
+            name="Request"
+            parent="menu_hospital_medical"
+            action="action_hospital_request"/>
+
   <menuitem id="menu_hospital_disease"
             name="Disease"
             parent="menu_hospital_medical"
@@ -17,11 +22,10 @@
             parent="menu_hospital_medical"
             action="action_hospital_symptom"/>
 
+
   <!-- Sous-menu Patient -->
   <menuitem id="menu_patient_management" name="Patients" parent="menu_hospital_root"/>
 
-  <menuitem id="menu_medical_requests" name="Medical Requests" parent="menu_patient_management"
-            action="action_medical_request"/>
   <menuitem id="menu_retained_patients" name="Retained Patients" parent="menu_patient_management"
             action="action_retained_patients"/>
 

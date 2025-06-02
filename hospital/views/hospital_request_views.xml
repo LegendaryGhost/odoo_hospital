@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="view_medical_request_list" model="ir.ui.view">
+  <record id="view_hospital_request_list" model="ir.ui.view">
     <field name="name">hospital.request.list</field>
     <field name="model">hospital.request</field>
     <field name="arch" type="xml">
-      <list string="Demandes médicales">
+      <list string="Medical Requests">
         <field name="patient_id"/>
-        <field name="symptom_ids"/>
+        <field name="doctor_id"/>
+        <field name="nurse_id"/>
+        <field name="symptom_ids" widget="many2many_tags"/>
         <field name="note"/>
       </list>
     </field>
   </record>
 
-  <record id="view_medical_request_form" model="ir.ui.view">
+  <record id="view_hospital_request_form" model="ir.ui.view">
     <field name="name">hospital.request.form</field>
     <field name="model">hospital.request</field>
     <field name="arch" type="xml">
-      <form string="Demande médicale">
+      <form string="Medical Request">
         <group>
-          <field name="patient_id" readonly="1"/>
+          <field name="patient_id"/>
+          <field name="doctor_id"/>
           <field name="symptom_ids" widget="many2many_tags"/>
           <field name="note"/>
         </group>
@@ -26,19 +29,23 @@
     </field>
   </record>
 
-  <!-- Action pour les demandes médicales (patients) -->
-  <record id="action_medical_request" model="ir.actions.act_window">
-    <field name="name">Mes demandes médicales</field>
+  <!-- Action pour les demandes médicales (infirmiers) -->
+  <record id="action_hospital_request" model="ir.actions.act_window">
+    <field name="name">Medical Requests</field>
     <field name="res_model">hospital.request</field>
     <field name="view_mode">list,form</field>
-    <field name="view_id" ref="view_medical_request_list"/>
-    <field name="view_ids" eval="[(0,0,{'view_id': ref('view_medical_request_form'),'view_mode': 'form'})]"/>
-    <field name="domain">[('patient_id','=',user.id)]</field>
+    <field name="view_id" ref="view_hospital_request_list"/>
+    <field name="view_ids" eval="[
+      (5, 0, 0),
+      (0, 0, {'view_id': ref('view_hospital_request_list'), 'view_mode': 'list'}),
+      (0, 0, {'view_id': ref('view_hospital_request_form'), 'view_mode': 'form'})
+    ]"/>
+    <field name="domain">[('nurse_id', '=', uid)]</field>
   </record>
 
   <!-- Action pour les patients retenus (personnel hospitalier) -->
   <record id="action_retained_patients" model="ir.actions.act_window">
-    <field name="name">Patients retenus</field>
+    <field name="name">Retained Patients</field>
     <field name="res_model">res.users</field>
     <field name="view_mode">list,form</field>
     <field name="domain">[('patient_state','in',['treatment','remission'])]</field>
