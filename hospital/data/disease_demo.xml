@@ -11,18 +11,11 @@
     <field name="name">Flu</field>
     <field name="description">Common flu with fever and cough</field>
     <field name="symptom_ids" eval="[(6, 0, [ref('symptom_fever'), ref('symptom_cough')])]"/>
-    <field name="is_grave">False</field>
-    <field name="needs_medicine">True</field>
-    <field name="final_action">go_home_medication</field>
   </record>
 
   <record id="disease_pneumonia" model="hospital.disease">
     <field name="name">Pneumonia</field>
     <field name="description">Serious lung infection</field>
     <field name="symptom_ids" eval="[(6, 0, [ref('symptom_fever')])]"/>
-    <field name="is_grave">True</field>
-    <field name="needs_medicine">True</field>
-    <field name="final_action">hospitalize</field>
-    <field name="hospital_days">5</field>
   </record>
 </odoo>

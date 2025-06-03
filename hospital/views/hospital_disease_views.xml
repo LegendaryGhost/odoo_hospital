@@ -6,10 +6,7 @@
     <field name="arch" type="xml">
       <list>
         <field name="name"/>
-        <field name="is_grave"/>
-        <field name="needs_medicine"/>
-        <field name="final_action"/>
-        <field name="hospital_days"/>
+        <field name="symptom_ids" widget="many2many_tags"/>
       </list>
     </field>
   </record>
@@ -24,10 +21,6 @@
             <field name="name"/>
             <field name="description"/>
             <field name="symptom_ids" widget="many2many_tags"/>
-            <field name="is_grave"/>
-            <field name="needs_medicine"/>
-            <field name="final_action"/>
-            <field name="hospital_days"/>
           </group>
         </sheet>
       </form>
