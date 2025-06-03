@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Create Users First -->
+        <record id="user_doctor_john" model="res.users">
+            <field name="name">Dr. John Smith</field>
+            <field name="login">john.smith@hospital.com</field>
+            <field name="email">john.smith@hospital.com</field>
+            <field name="password">hospital123</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_hospital_doctor')])]"/>
+        </record>
+
+        <record id="user_doctor_emma" model="res.users">
+            <field name="name">Dr. Emma Johnson</field>
+            <field name="login">emma.johnson@hospital.com</field>
+            <field name="email">emma.johnson@hospital.com</field>
+            <field name="password">hospital123</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_hospital_doctor')])]"/>
+        </record>
+
+        <record id="user_nurse_sarah" model="res.users">
+            <field name="name">Sarah Williams</field>
+            <field name="login">sarah.williams@hospital.com</field>
+            <field name="email">sarah.williams@hospital.com</field>
+            <field name="password">hospital123</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_hospital_nurse')])]"/>
+        </record>
+
+        <record id="user_nurse_michael" model="res.users">
+            <field name="name">Michael Brown</field>
+            <field name="login">michael.brown@hospital.com</field>
+            <field name="email">michael.brown@hospital.com</field>
+            <field name="password">hospital123</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_hospital_nurse')])]"/>
+        </record>
+
+        <!-- Create Partner Records -->
+        <record id="partner_doctor_john" model="res.partner">
+            <field name="name">Dr. John Smith</field>
+            <field name="email">john.smith@hospital.com</field>
+            <field name="phone">+1 555 123 4567</field>
+            <field name="is_company" eval="False"/>
+            <field name="type">contact</field>
+        </record>
+
+        <record id="partner_doctor_emma" model="res.partner">
+            <field name="name">Dr. Emma Johnson</field>
+            <field name="email">emma.johnson@hospital.com</field>
+            <field name="phone">+1 555 765 4321</field>
+            <field name="is_company" eval="False"/>
+            <field name="type">contact</field>
+        </record>
+
+        <record id="partner_nurse_sarah" model="res.partner">
+            <field name="name">Sarah Williams</field>
+            <field name="email">sarah.williams@hospital.com</field>
+            <field name="phone">+1 555 987 6543</field>
+            <field name="is_company" eval="False"/>
+            <field name="type">contact</field>
+        </record>
+
+        <record id="partner_nurse_michael" model="res.partner">
+            <field name="name">Michael Brown</field>
+            <field name="email">michael.brown@hospital.com</field>
+            <field name="phone">+1 555 456 7890</field>
+            <field name="is_company" eval="False"/>
+            <field name="type">contact</field>
+        </record>
+
+        <!-- Link Users to Partners -->
+        <function model="res.users" name="write" eval="[[ref('user_doctor_john')], {'partner_id': ref('partner_doctor_john')}]"/>
+        <function model="res.users" name="write" eval="[[ref('user_doctor_emma')], {'partner_id': ref('partner_doctor_emma')}]"/>
+        <function model="res.users" name="write" eval="[[ref('user_nurse_sarah')], {'partner_id': ref('partner_nurse_sarah')}]"/>
+        <function model="res.users" name="write" eval="[[ref('user_nurse_michael')], {'partner_id': ref('partner_nurse_michael')}]"/>
+    </data>
+</odoo>

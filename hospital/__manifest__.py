@@ -10,7 +10,9 @@
     'license': 'LGPL-3',
     'data': [
         'security/ir.model.access.csv',
+        'security/groups.xml',
 
+        'data/staff_data.xml',
         'data/disease_demo.xml',
 
         'views/hospital_disease_views.xml',
