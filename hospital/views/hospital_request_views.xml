@@ -8,6 +8,7 @@
         <field name="patient_id"/>
         <field name="doctor_id"/>
         <field name="nurse_id"/>
+        <field name="state"/>
         <field name="symptom_ids" widget="many2many_tags"/>
         <field name="note"/>
       </list>
@@ -19,12 +20,18 @@
     <field name="model">hospital.request</field>
     <field name="arch" type="xml">
       <form string="Medical Request">
-        <group>
-          <field name="patient_id"/>
-          <field name="doctor_id"/>
-          <field name="symptom_ids" widget="many2many_tags"/>
-          <field name="note"/>
-        </group>
+        <header>
+          <field name="state" widget="statusbar" statusbar_visible="new,assigned,treated"/>
+        </header>
+        <sheet>
+          <group>
+            <field name="patient_id"/>
+            <field name="doctor_id"/>
+            <field name="nurse_id"/>
+            <field name="symptom_ids" widget="many2many_tags"/>
+            <field name="note"/>
+          </group>
+        </sheet>
       </form>
     </field>
   </record>
