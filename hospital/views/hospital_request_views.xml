@@ -27,7 +27,7 @@
           <group>
             <field name="patient_id"/>
             <field name="doctor_id"/>
-            <field name="nurse_id"/>
+            <field name="nurse_id" readonly="1"/>
             <field name="symptom_ids" widget="many2many_tags"/>
             <field name="note"/>
           </group>

@@ -10,7 +10,8 @@
   <menuitem id="menu_hospital_request"
             name="Request"
             parent="menu_hospital_medical"
-            action="action_hospital_request"/>
+            action="action_hospital_request"
+            sequence="1"/>
 
   <menuitem id="menu_hospital_disease"
             name="Disease"
